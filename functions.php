@@ -2,6 +2,7 @@
 
 require_once get_theme_file_path( "/inc/tgm.php" );
 require_once get_theme_file_path( "/inc/attachments.php" );
+require_once get_theme_file_path( "/widgets/social-icons-widget.php" );
 
 if ( site_url() == "http:philosophy.test" ) {
  define( "VERSION", time() );
@@ -18,6 +19,11 @@ function philosophy_theme_setup() {
  add_editor_style( '/assets/css/editor-style.css' );
 
  register_nav_menu( "topmenu", __( "Top Menu", "philosophy" ) );
+ register_nav_menus( [
+  "footerleft"   => __( "Footer Left Menu", "philosophy" ),
+  "footermiddle" => __( "Footer Middle Menu", "philosophy" ),
+  "footerright"  => __( "Footer Right Menu", "philosophy" ),
+ ] );
 
  add_image_size( 'philosophy-home-squre', '400', '400', true );
 }
@@ -103,6 +109,27 @@ function philosophy_widgets() {
   'before_title'  => '<h3>',
   'after_title'   => '</h3>',
  ] );
+
+ register_sidebar( [
+  'name'          => __( 'Footer Copyright', 'philosophy' ),
+  'id'            => 'footer-copyright',
+  'description'   => __( 'Widgets in this area will be shown on footer copyright section.', 'philosophy' ),
+  'before_widget' => '<div id="%1$s" class="s-footer__copyright %2$s">',
+  'after_widget'  => '</div>',
+  'before_title'  => '',
+  'after_title'   => '',
+ ] );
+
+ register_sidebar( [
+  'name'          => __( 'Social Icons', 'philosophy' ),
+  'id'            => 'social-icons',
+  'description'   => __( 'Widgets in this area will be shown on social icons.', 'philosophy' ),
+  'before_widget' => '<div id="%1$s" class="%2$s">',
+  'after_widget'  => '</div>',
+  'before_title'  => '',
+  'after_title'   => '',
+ ] );
+
 }
 
 add_action( "widgets_init", "philosophy_widgets" );

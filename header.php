@@ -31,20 +31,11 @@
                     </a>
                 </div> <!-- end header__logo -->
 
-                <ul class="header__social">
-                    <li>
-                        <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    </li>
-                    <li>
-                        <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    </li>
-                    <li>
-                        <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                    </li>
-                    <li>
-                        <a href="#0"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                    </li>
-                </ul> <!-- end header__social -->
+                <?php
+                    if(is_active_sidebar('social-icons')) {
+                        dynamic_sidebar('social-icons');
+                    }
+                ?>
 
                 <?php get_template_part('template-parts/common/navigation'); ?>
 
